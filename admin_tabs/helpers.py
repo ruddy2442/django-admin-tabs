@@ -305,6 +305,8 @@ class TabbedPageConfig(object):
 
 class TabbedModelAdmin(ModelAdmin):
     
+    change_form_template = 'admin_tabs/admin/change_form.html'
+    
     declared_fieldsets = []
     page_config_class = TabbedPageConfig
     def __init__(self, *args, **kwargs):
@@ -361,3 +363,8 @@ class TabbedModelAdmin(ModelAdmin):
         extra_context.update({'page_config': page_config})
         return super(TabbedModelAdmin, self).add_view(request, form_url=form_url, extra_context=extra_context)
 
+    class Media:
+        css = {
+            "all": ("admin_tabs/css/jquery-ui-1.10.3.custom.min.css", "admin_tabs/css/tabs.css")
+        }
+        js = ('admin_tabs/js/jquery-1.9.1.js', "admin_tabs/js/jquery-ui-1.10.3.custom.min.js")

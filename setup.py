@@ -9,7 +9,7 @@ setup(
     packages=find_packages(exclude=['example_project']),
     include_package_data=True,
     license='BSD License',
-    description='Tabs for django.contrib.admin',
+    description='Tabs for django.contrib.admin - forked version',
     long_description=open('README').read(),
     author='Djaz Team',
     author_email='devweb@liberation.fr',

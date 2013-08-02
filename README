@@ -2,6 +2,8 @@ This is a fork of original liberation/django-admin-tabs.
 
 Brings new jquery ui 1.10.3, customized style and minor changes to make it easier to install.
 
+Copy static folder from admin_tabs to your project's static (or create symlink)
+
 ###
 
 django-admin-tabs is a little app that helps you modify django native admin to

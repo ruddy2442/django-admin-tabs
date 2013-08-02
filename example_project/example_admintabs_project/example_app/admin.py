@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.admin.options import StackedInline
+from django.contrib.admin.options import StackedInline, TabularInline
 
 from example_admintabs_project.example_app.models import Article, Category
 
@@ -25,7 +25,7 @@ class ArticlePageConfig(TabbedPageConfig):
         secondary_tab = Config(name="Relations", cols=["authors_col", "categories_col"])
 
 
-class ArticleToUserInline(StackedInline):
+class ArticleToUserInline(TabularInline):
     model = Article.authors.through
 
 
@@ -37,13 +37,6 @@ class ArticleAdmin(TabbedModelAdmin):
     page_config_class = ArticlePageConfig
     readonly_fields = ('created_at', 'modified_at')
     inlines = (ArticleToUserInline, ArticleToCategoryInline)
-    change_form_template = 'example_app/change_form.html'
-
-    class Media:
-        css = {
-            "all": ("example_app/css/jquery-ui-1.8.22.custom.css", "example_app/css/tabs.css")
-        }
-        js = ("example_app/js/jquery-ui-1.8.22.custom.min.js",)  # Note: was modified to use django.jQuery and not jQuery
 
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category)
